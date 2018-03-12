@@ -14,11 +14,11 @@ md5sums=(SKIP SKIP SKIP)
 package() {
   local DEST=(
     "usr/share/doc/$pkgname/README.md"
-    "lib/initcpio/hooks/$_name"
-    "lib/initcpio/install/$_name"
+    "usr/lib/initcpio/hooks/$_name"
+    "usr/lib/initcpio/install/$_name"
   )
   for((i = 0; i < "${#source[@]}"; ++i)); do
     mkdir -p "$pkgdir/$(dirname "${DEST[i]}")"
-    install --mode +r "$srcdir/${source[i]}" "$pkgdir/${DEST[i]}"
+    install -Dm644 "$srcdir/${source[i]}" "$pkgdir/${DEST[i]}"
   done
 }
